@@ -1,6 +1,6 @@
 {
-  "short_name": "React App",
-  "name": "Create React App Sample",
+  "short_name": "Switcheroo",
+  "name": "A react, redux-saga app to switch logo",
   "icons": [
     {
       "src": "favicon.ico",

@@ -1,28 +1,54 @@
-import React, { Component } from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React, { Component } from "react";
+import logo from "./logo.svg";
+import "./App.css";
+import { connect } from "react-redux";
+import { fetchImages } from "./redux/actions";
 
 class App extends Component {
   render() {
+    const { fetching, img, onRequest, error } = this.props;
+    console.log(this.props);
     return (
       <div className="App">
         <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <p>
-            Edit <code>src/App.js</code> and save to reload.
-          </p>
-          <a
-            className="App-link"
-            href="https://reactjs.org"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Learn React
-          </a>
+          <img src={img || logo} className="App-logo" alt="logo" />
+          <h1 className="app-title">Picture Switcharoo</h1>
         </header>
+        {img ? (
+          <p className="App-intro">Click more for new pic</p>
+        ) : (
+          <p className="App-intro">Replace the React logo</p>
+        )}
+
+        {fetching ? (
+          <button className="button" disabled>
+            Fetching...
+          </button>
+        ) : (
+          <button onClick={onRequest}>NEW PIC</button>
+        )}
+
+        {error && <p style={{ color: "red" }}>Error!</p>}
       </div>
     );
   }
 }
 
-export default App;
+const mapStateToProps = state => {
+  return {
+    fetching: state.fetching,
+    img: state.img,
+    error: state.error
+  };
+};
+
+const mapDispatchToProps = dispatch => {
+  return {
+    onRequest: () => dispatch(fetchImages())
+  };
+};
+
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(App);

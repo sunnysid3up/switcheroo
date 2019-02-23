@@ -12,14 +12,8 @@ class App extends Component {
       <div className="App">
         <header className="App-header">
           <img src={img || logo} className="App-logo" alt="logo" />
-          <h1 className="app-title">Picture Switcharoo</h1>
+          <h1 className="app-title">Switcharoo</h1>
         </header>
-        {img ? (
-          <p className="App-intro">Click more for new pic</p>
-        ) : (
-          <p className="App-intro">Replace the React logo</p>
-        )}
-
         {fetching ? (
           <button className="button" disabled>
             Fetching...

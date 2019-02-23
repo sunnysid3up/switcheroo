@@ -1,6 +1,6 @@
 {
   "short_name": "Switcheroo",
-  "name": "A react, redux-saga app to switch logo",
+  "name": "A react, redux-saga app to switch logo on button click",
   "icons": [
     {
       "src": "favicon.ico",
